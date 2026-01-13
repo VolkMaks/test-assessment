@@ -6,7 +6,6 @@ declare module "@mui/material/styles" {
     body4: React.CSSProperties;
   }
 
-  // allow configuration using `createTheme()`
   interface TypographyVariantsOptions {
     body3?: React.CSSProperties;
     body4?: React.CSSProperties;
