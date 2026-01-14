@@ -3,8 +3,8 @@ import '@fontsource/outfit/400.css';
 import '@fontsource/outfit/500.css';
 import '@fontsource/outfit/600.css';
 import '@fontsource/outfit/700.css';
-import { Providers } from './components/Providers';
-import { Summary } from './components/Summary';
+import { Providers } from './components/shared/Providers';
+import { Summary } from './features/candidate/components/Summary';
 
 function App() {
   return (

@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
+import { apiClient } from '@/utils/apiClient';
 import type { Profile } from '../types/Profile';
-import { apiClient } from '../utils/apiClient';
 
 const QUERY_KEY = 'profile';
 

@@ -1,6 +1,6 @@
 import type { FC } from 'react';
-import { Item, type ItemProps } from './Item';
 import { Box } from '@mui/material';
+import { Item, type ItemProps } from './Item';
 
 interface Props {
   items: ItemProps[];

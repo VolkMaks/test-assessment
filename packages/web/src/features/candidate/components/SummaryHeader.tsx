@@ -1,7 +1,7 @@
 import { Box, Stack, Typography } from '@mui/material';
 import AccessAlarmIcon from '@mui/icons-material/InfoOutline';
 
-export const Header = () => {
+export const SummaryHeader = () => {
   return (
     <Box
       sx={theme => ({

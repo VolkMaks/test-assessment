@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
+
+import type { Achievement } from '../types/Achievement';
 import type { CandidateSummary } from '../types/CandidateSummary';
 import type { Skill } from '../types/Skill';
-import type { Achievement } from '../types/Achievement';
-import { apiClient } from '../utils/apiClient';
 
 interface ParsedQueryData {
   summary: string;

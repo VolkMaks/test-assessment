@@ -3,9 +3,9 @@ import React, { type ReactElement } from 'react';
 import { useCandidateSummaryQuery } from '../hooks/useCandidateSummaryQuery';
 import { useProfileQuery } from '../hooks/useProfileQuery';
 import { AchievementsSection } from './AchievementsSection';
-import { ErrorAlert } from './ErrorAlert';
-import { Header } from './Header';
-import { Paragraph } from './Paragraph';
+import { ErrorAlert } from '@/components/ui/ErrorAlert';
+import { SummaryHeader } from './SummaryHeader';
+import { Paragraph } from '@/components/ui/Paragraph';
 import { TechnologySection } from './TechnologySection';
 
 export const Summary = () => {
@@ -34,7 +34,7 @@ export const Summary = () => {
         {profileError && (
           <ErrorAlert message={profileError.message} onRetry={refetchProfile} />
         )}
-        <Paragraph text={candidate?.summary} isLoading={isLoading} />
+        <Paragraph text={candidate?.summary ?? ''} isLoading={isLoading} />
         <TechnologySection
           title="Main technologies"
           profileSkills={profileSkills}
@@ -69,7 +69,7 @@ export const Summary = () => {
         sx={{ width: 800, py: 8, minHeight: '100vh' }}
         spacing={4}
       >
-        <Header />
+        <SummaryHeader />
         {content}
       </Stack>
     </Box>
