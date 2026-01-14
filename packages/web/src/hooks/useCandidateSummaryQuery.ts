@@ -19,11 +19,11 @@ export const useCandidateSummaryQuery = (): QueryResult<ParsedQueryData> => {
     queryKey: [QUERY_KEY],
     queryFn: async () => {
       const response = await fetch(
-        'https://test-task-mock-api-pdbw.onrender.com/api/candidate/summary',
+        `${import.meta.env.VITE_API_URL}/candidate/summary`,
         {
           headers: {
             'Content-Type': 'application/json',
-            'auth-key': import.meta.env.REACT_APP_API_KEY,
+            'auth-key': import.meta.env.VITE_API_KEY,
           },
         },
       );
