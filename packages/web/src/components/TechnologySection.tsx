@@ -1,4 +1,4 @@
-import { useMemo, type FC } from 'react';
+import { type FC } from 'react';
 import type { Skill } from '../types/Skill';
 import { SummarySection } from './SummarySection';
 import type { ItemProps } from './Item';
@@ -17,25 +17,23 @@ export const TechnologySection: FC<Props> = ({
   isLoading = false,
   profileSkills,
 }) => {
-  const items = useMemo(() => {
-    return skills.map((skill): ItemProps => {
-      const props: ItemProps = {
-        id: skill.id,
-        title: skill.title,
-      };
+  const items = skills.map((skill): ItemProps => {
+    const props: ItemProps = {
+      id: skill.id,
+      title: skill.title,
+    };
 
-      if (skill.yearsOfExperience) {
-        props.subTitle = pluralize('Year', skill.yearsOfExperience, true);
-      }
+    if (skill.yearsOfExperience) {
+      props.subTitle = pluralize('Year', skill.yearsOfExperience, true);
+    }
 
-      if (profileSkills.has(skill.title)) {
-        props.relevant = true;
-        props.info = 'Relevant skill';
-      }
+    if (profileSkills.has(skill.title)) {
+      props.relevant = true;
+      props.info = 'Relevant skill';
+    }
 
-      return props;
-    });
-  }, [profileSkills, skills]);
+    return props;
+  });
 
   return <SummarySection title={title} items={items} isLoading={isLoading} />;
 };

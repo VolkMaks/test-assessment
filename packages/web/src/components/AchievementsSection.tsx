@@ -1,4 +1,4 @@
-import { useMemo, type FC } from 'react';
+import { type FC } from 'react';
 import { SummarySection } from './SummarySection';
 import type { ItemProps } from './Item';
 import type { Achievement } from '../types/Achievement';
@@ -15,18 +15,16 @@ export const AchievementsSection: FC<Props> = ({
   achievements,
   isLoading = false,
 }) => {
-  const items = useMemo(() => {
-    return achievements.map((achievement): ItemProps => {
-      const props: ItemProps = {
-        id: achievement.id,
-        title: achievement.title,
-        info: achievement.info,
-        PrefixIcon: <Stars sx={{ fontSize: '20px', color: '#000000' }} />,
-      };
+  const items = achievements.map((achievement): ItemProps => {
+    const props: ItemProps = {
+      id: achievement.id,
+      title: achievement.title,
+      info: achievement.info,
+      PrefixIcon: <Stars sx={{ fontSize: '20px', color: '#000000' }} />,
+    };
 
-      return props;
-    });
-  }, [achievements]);
+    return props;
+  });
 
   return <SummarySection title={title} items={items} isLoading={isLoading} />;
 };
