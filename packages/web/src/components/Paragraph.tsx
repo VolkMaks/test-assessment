@@ -2,7 +2,7 @@ import { Skeleton, Typography } from '@mui/material';
 import type { FC } from 'react';
 
 interface Props {
-  text: string;
+  text?: string;
   isLoading?: boolean;
 }
 

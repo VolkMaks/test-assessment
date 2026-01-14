@@ -1,9 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import type { CandidateSummary } from '../types/CandidateSummary';
-import { useMemo } from 'react';
 import type { Skill } from '../types/Skill';
 import type { Achievement } from '../types/Achievement';
-import type { QueryResult } from '../types/QueryResult';
+import { apiClient } from '../utils/apiClient';
 
 interface ParsedQueryData {
   summary: string;
@@ -14,61 +13,44 @@ interface ParsedQueryData {
 
 const QUERY_KEY = 'candidate_summary';
 
-export const useCandidateSummaryQuery = (): QueryResult<ParsedQueryData> => {
-  const { isLoading, error, data, refetch } = useQuery({
+export const useCandidateSummaryQuery = () => {
+  return useQuery({
     queryKey: [QUERY_KEY],
     queryFn: async () => {
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/candidate/summary`,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            'auth-key': import.meta.env.VITE_API_KEY,
-          },
-        },
-      );
+      try {
+        const response =
+          await apiClient.get<CandidateSummary>('/candidate/summary');
 
-      const data = await response.json();
+        return response.data;
+      } catch (error) {
+        console.error(error);
 
-      if (!response.ok) {
         const message = 'Error fetching candidate summary';
-
-        console.error({ message, data });
 
         throw new Error(message);
       }
+    },
+    select: (rawData): ParsedQueryData => {
+      const parsedData: ParsedQueryData = {
+        summary: rawData?.profile.summary || '',
+        mainTechnologies: [],
+        additionalSkills: [],
+        achievements: [],
+      };
 
-      return data as CandidateSummary;
+      rawData?.profile.skills.forEach(skill => {
+        if (skill.main) {
+          parsedData.mainTechnologies.push(skill);
+        } else {
+          parsedData.additionalSkills.push(skill);
+        }
+      });
+
+      if (rawData?.profile.achievements) {
+        parsedData.achievements = rawData?.profile.achievements;
+      }
+
+      return parsedData;
     },
   });
-
-  const parsedData = useMemo(() => {
-    const parsedData: ParsedQueryData = {
-      summary: data?.profile.summary || '',
-      mainTechnologies: [],
-      additionalSkills: [],
-      achievements: [],
-    };
-
-    data?.profile.skills.forEach(skill => {
-      if (skill.main) {
-        parsedData.mainTechnologies.push(skill);
-      } else {
-        parsedData.additionalSkills.push(skill);
-      }
-    });
-
-    if (data?.profile.achievements) {
-      parsedData.achievements = data?.profile.achievements;
-    }
-
-    return parsedData;
-  }, [data?.profile.achievements, data?.profile.skills, data?.profile.summary]);
-
-  return {
-    isLoading,
-    error,
-    parsedData,
-    refetch,
-  };
 };

@@ -6,13 +6,13 @@ import { Stars } from '@mui/icons-material';
 
 interface Props {
   title: string;
-  achievements: Achievement[];
+  achievements?: Achievement[];
   isLoading?: boolean;
 }
 
 export const AchievementsSection: FC<Props> = ({
   title,
-  achievements,
+  achievements = [],
   isLoading = false,
 }) => {
   const items = achievements.map((achievement): ItemProps => {

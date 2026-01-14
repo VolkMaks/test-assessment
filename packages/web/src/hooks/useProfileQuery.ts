@@ -1,43 +1,25 @@
 import { useQuery } from '@tanstack/react-query';
-import { useMemo } from 'react';
-import type { QueryResult } from '../types/QueryResult';
 import type { Profile } from '../types/Profile';
+import { apiClient } from '../utils/apiClient';
 
 const QUERY_KEY = 'profile';
 
-export const useProfileQuery = (): QueryResult<Set<string>> => {
-  const { isLoading, error, data, refetch } = useQuery({
+export const useProfileQuery = () => {
+  return useQuery({
     queryKey: [QUERY_KEY],
     queryFn: async () => {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/profile`, {
-        headers: {
-          'Content-Type': 'application/json',
-          'auth-key': import.meta.env.VITE_API_KEY,
-        },
-      });
+      try {
+        const response = await apiClient.get<Profile>('/profile');
 
-      const data = await response.json();
+        return response.data;
+      } catch (error) {
+        console.error(error);
 
-      if (!response.ok) {
         const message = 'Error fetching profile';
-
-        console.error({ message, data });
 
         throw new Error(message);
       }
-
-      return data as Profile;
     },
+    select: (rawData): Set<string> => new Set(rawData?.skills),
   });
-
-  const parsedData = useMemo(() => {
-    return new Set(data?.skills);
-  }, [data?.skills]);
-
-  return {
-    isLoading,
-    error,
-    parsedData,
-    refetch,
-  };
 };

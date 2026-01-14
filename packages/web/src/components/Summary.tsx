@@ -11,22 +11,22 @@ import { TechnologySection } from './TechnologySection';
 export const Summary = () => {
   const {
     isLoading,
-    error: summaryError,
-    parsedData: parsedSummary,
-    refetch: refetchSummary,
+    error: candidateError,
+    data: candidate,
+    refetch: refetchCandidate,
   } = useCandidateSummaryQuery();
 
   const {
     error: profileError,
-    parsedData: profileSkills,
+    data: profileSkills,
     refetch: refetchProfile,
   } = useProfileQuery();
 
   let content: ReactElement | null = null;
 
-  if (!isLoading && summaryError) {
+  if (!isLoading && candidateError) {
     content = (
-      <ErrorAlert message={summaryError.message} onRetry={refetchSummary} />
+      <ErrorAlert message={candidateError.message} onRetry={refetchCandidate} />
     );
   } else {
     content = (
@@ -34,22 +34,22 @@ export const Summary = () => {
         {profileError && (
           <ErrorAlert message={profileError.message} onRetry={refetchProfile} />
         )}
-        <Paragraph text={parsedSummary.summary} isLoading={isLoading} />
+        <Paragraph text={candidate?.summary} isLoading={isLoading} />
         <TechnologySection
           title="Main technologies"
           profileSkills={profileSkills}
-          skills={parsedSummary?.mainTechnologies}
+          skills={candidate?.mainTechnologies}
           isLoading={isLoading}
         />
         <TechnologySection
           title="Additional skills"
           profileSkills={profileSkills}
-          skills={parsedSummary?.additionalSkills}
+          skills={candidate?.additionalSkills}
           isLoading={isLoading}
         />
         <AchievementsSection
           title="Rewards and achievements"
-          achievements={parsedSummary?.achievements}
+          achievements={candidate?.achievements}
           isLoading={isLoading}
         />
       </React.Fragment>

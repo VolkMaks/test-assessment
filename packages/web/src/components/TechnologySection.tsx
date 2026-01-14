@@ -6,14 +6,14 @@ import pluralize from 'pluralize';
 
 interface Props {
   title: string;
-  skills: Skill[];
-  profileSkills: Set<string>;
+  skills?: Skill[];
+  profileSkills?: Set<string>;
   isLoading?: boolean;
 }
 
 export const TechnologySection: FC<Props> = ({
   title,
-  skills,
+  skills = [],
   isLoading = false,
   profileSkills,
 }) => {
@@ -27,7 +27,7 @@ export const TechnologySection: FC<Props> = ({
       props.subTitle = pluralize('Year', skill.yearsOfExperience, true);
     }
 
-    if (profileSkills.has(skill.title)) {
+    if (profileSkills?.has(skill.title)) {
       props.relevant = true;
       props.info = 'Relevant skill';
     }
