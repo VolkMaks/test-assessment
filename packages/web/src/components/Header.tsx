@@ -1,14 +1,14 @@
-import { Box, Stack, Typography } from "@mui/material";
-import AccessAlarmIcon from "@mui/icons-material/InfoOutline";
+import { Box, Stack, Typography } from '@mui/material';
+import AccessAlarmIcon from '@mui/icons-material/InfoOutline';
 
 export const Header = () => {
   return (
     <Box
-      sx={(theme) => ({
-        display: "flex",
-        justifyContent: "space-between",
-        [theme.breakpoints.down("sm")]: {
-          flexDirection: "column",
+      sx={theme => ({
+        display: 'flex',
+        justifyContent: 'space-between',
+        [theme.breakpoints.down('sm')]: {
+          flexDirection: 'column',
           gap: 2,
         },
       })}
@@ -17,31 +17,31 @@ export const Header = () => {
         variant="h4"
         sx={{
           backgroundImage:
-            "linear-gradient(0deg, #DCFF02 0.47em, transparent 0.47em)",
-          px: "3px",
-          mixBlendMode: "darken",
-          color: "#000000",
-          width: "max-content",
+            'linear-gradient(0deg, #DCFF02 0.47em, transparent 0.47em)',
+          px: '3px',
+          mixBlendMode: 'darken',
+          color: '#000000',
+          width: 'max-content',
         }}
       >
         Summary
       </Typography>
       <Stack
-        direction={"row"}
+        direction={'row'}
         spacing={0.5}
         sx={{
-          color: "#00000061",
-          display: "flex",
-          alignItems: "center",
+          color: '#00000061',
+          display: 'flex',
+          alignItems: 'center',
         }}
       >
-        <AccessAlarmIcon sx={{ fontSize: "22px" }} />
+        <AccessAlarmIcon sx={{ fontSize: '22px' }} />
         <Typography
           sx={{
             fontWeight: 400,
-            fontSize: "14px",
-            lineHeight: "20px",
-            letterSpacing: "0.4px",
+            fontSize: '14px',
+            lineHeight: '20px',
+            letterSpacing: '0.4px',
           }}
         >
           Relevant skills are highlighted

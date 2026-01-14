@@ -1,5 +1,5 @@
-import type { Achievement } from "./Achievement";
-import type { Skill } from "./Skill";
+import type { Achievement } from './Achievement';
+import type { Skill } from './Skill';
 
 export interface CandidateSummary {
   profile: {

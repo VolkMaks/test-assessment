@@ -1,18 +1,18 @@
-import "@fontsource/outfit/300.css";
-import "@fontsource/outfit/400.css";
-import "@fontsource/outfit/500.css";
-import "@fontsource/outfit/600.css";
-import "@fontsource/outfit/700.css";
-import { Box, Stack } from "@mui/material";
-import { Header } from "./components/Header";
-import { Paragraph } from "./components/Paragraph";
-import { useCandidateSummaryQuery } from "./hooks/useCandidateSummaryQuery";
-import { useProfileQuery } from "./hooks/useProfileQuery";
-import { TechnologySection } from "./components/TechnologySection";
-import { AchievementsSection } from "./components/AchievementsSection";
-import type { ReactElement } from "react";
-import React from "react";
-import { ErrorAlert } from "./components/ErrorAlert";
+import '@fontsource/outfit/300.css';
+import '@fontsource/outfit/400.css';
+import '@fontsource/outfit/500.css';
+import '@fontsource/outfit/600.css';
+import '@fontsource/outfit/700.css';
+import { Box, Stack } from '@mui/material';
+import { Header } from './components/Header';
+import { Paragraph } from './components/Paragraph';
+import { useCandidateSummaryQuery } from './hooks/useCandidateSummaryQuery';
+import { useProfileQuery } from './hooks/useProfileQuery';
+import { TechnologySection } from './components/TechnologySection';
+import { AchievementsSection } from './components/AchievementsSection';
+import type { ReactElement } from 'react';
+import React from 'react';
+import { ErrorAlert } from './components/ErrorAlert';
 
 function App() {
   const {
@@ -67,15 +67,15 @@ function App() {
 
   return (
     <Box
-      sx={(theme) => ({
-        display: "flex",
-        justifyContent: "center",
-        [theme.breakpoints.down("md")]: { px: "80px" },
+      sx={theme => ({
+        display: 'flex',
+        justifyContent: 'center',
+        [theme.breakpoints.down('md')]: { px: '80px' },
       })}
     >
       <Stack
-        component={"section"}
-        sx={{ width: 800, py: 8, minHeight: "100vh" }}
+        component={'section'}
+        sx={{ width: 800, py: 8, minHeight: '100vh' }}
         spacing={4}
       >
         <Header />

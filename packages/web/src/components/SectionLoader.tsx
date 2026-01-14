@@ -1,4 +1,4 @@
-import { Grid, Skeleton } from "@mui/material";
+import { Grid, Skeleton } from '@mui/material';
 
 const GRID_COLUMN_COUNT = 12;
 const GRID_ITEM_SIZE = 2;
@@ -9,7 +9,7 @@ export const SectionLoader = () => {
     <Grid container spacing={1}>
       {Array.from({ length: ITEM_COUNT }).map((_, i) => (
         <Grid size={GRID_ITEM_SIZE} key={i}>
-          <Skeleton variant="rectangular" width={"auto"} height={54} />
+          <Skeleton variant="rectangular" width={'auto'} height={54} />
         </Grid>
       ))}
     </Grid>

@@ -13,8 +13,14 @@
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
+    "husky": "^9.1.7",
+    "prettier": "3.7.4",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint --ext .ts --ext .tsx packages",
+    "prettier": "prettier --write \"packages/**/*.{ts,tsx}\""
+  }
 }

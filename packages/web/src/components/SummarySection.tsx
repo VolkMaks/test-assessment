@@ -1,8 +1,8 @@
-import { Stack, Typography } from "@mui/material";
-import type { FC } from "react";
-import { type ItemProps } from "./Item";
-import { ItemList } from "./ItemList";
-import { SectionLoader } from "./SectionLoader";
+import { Stack, Typography } from '@mui/material';
+import type { FC } from 'react';
+import { type ItemProps } from './Item';
+import { ItemList } from './ItemList';
+import { SectionLoader } from './SectionLoader';
 
 interface Props {
   title: string;

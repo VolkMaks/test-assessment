@@ -1,5 +1,5 @@
-import { Alert, Button, Typography } from "@mui/material";
-import type { FC } from "react";
+import { Alert, Button, Typography } from '@mui/material';
+import type { FC } from 'react';
 
 interface Props {
   message: string;

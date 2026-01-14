@@ -1,8 +1,8 @@
-import { useMemo, type FC } from "react";
-import { SummarySection } from "./SummarySection";
-import type { ItemProps } from "./Item";
-import type { Achievement } from "../types/Achievement";
-import { Stars } from "@mui/icons-material";
+import { useMemo, type FC } from 'react';
+import { SummarySection } from './SummarySection';
+import type { ItemProps } from './Item';
+import type { Achievement } from '../types/Achievement';
+import { Stars } from '@mui/icons-material';
 
 interface Props {
   title: string;
@@ -21,7 +21,7 @@ export const AchievementsSection: FC<Props> = ({
         id: achievement.id,
         title: achievement.title,
         info: achievement.info,
-        PrefixIcon: <Stars sx={{ fontSize: "20px", color: "#000000" }} />,
+        PrefixIcon: <Stars sx={{ fontSize: '20px', color: '#000000' }} />,
       };
 
       return props;
