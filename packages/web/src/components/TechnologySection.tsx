@@ -2,7 +2,7 @@ import { useMemo, type FC } from 'react';
 import type { Skill } from '../types/Skill';
 import { SummarySection } from './SummarySection';
 import type { ItemProps } from './Item';
-import { pluralize } from '../utils/pluralize';
+import pluralize from 'pluralize';
 
 interface Props {
   title: string;
@@ -25,7 +25,7 @@ export const TechnologySection: FC<Props> = ({
       };
 
       if (skill.yearsOfExperience) {
-        props.subTitle = pluralize(skill.yearsOfExperience, 'Year', true);
+        props.subTitle = pluralize('Year', skill.yearsOfExperience, true);
       }
 
       if (profileSkills.has(skill.title)) {
