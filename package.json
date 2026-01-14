@@ -20,6 +20,8 @@
   },
   "license": "MIT",
   "scripts": {
+    "web:dev": "cd packages/web && yarn dev",
+    "web:build": "cd packages/web && yarn build",
     "lint": "eslint --ext .ts --ext .tsx packages",
     "prettier": "prettier --write \"packages/**/*.{ts,tsx}\""
   }
