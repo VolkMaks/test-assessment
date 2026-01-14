@@ -16,24 +16,21 @@ import { ErrorAlert } from './components/ErrorAlert';
 
 function App() {
   const {
-    isLoading: isLoadingSummary,
+    isLoading,
     error: summaryError,
     parsedData: parsedSummary,
     refetch: refetchSummary,
   } = useCandidateSummaryQuery();
 
   const {
-    isLoading: isLoadingProfile,
     error: profileError,
     parsedData: profileSkills,
     refetch: refetchProfile,
   } = useProfileQuery();
 
-  const isLoading = isLoadingSummary || isLoadingProfile;
-
   let content: ReactElement | null = null;
 
-  if (!isLoadingSummary && summaryError) {
+  if (!isLoading && summaryError) {
     content = (
       <ErrorAlert message={summaryError.message} onRetry={refetchSummary} />
     );
